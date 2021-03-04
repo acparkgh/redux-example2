@@ -29,7 +29,7 @@ const reducer = ( state = initialState, action ) => {
       }      
     case 'DELETE_RESULT':
       const updatedResults = state.results.filter(
-        result => result.id !== action.id
+        (result) => { return result.id !== action.id }
       );
       return {
         ...state, results: updatedResults
