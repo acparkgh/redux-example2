@@ -31,17 +31,21 @@ class Counter extends Component {
         return (
             <div>
                 {/* <CounterOutput value={this.state.counter} /> */}
-                <CounterOutput value={this.props.ctr} />
+                <CounterOutput value={ this.props.ctr } />
                 {/* <CounterControl label="Increment" clicked={() => this.counterChangedHandler( 'inc' )} /> */}
-                <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
-                <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
-                <CounterControl label="Add" clicked={this.props.onAddFive}  />
-                <CounterControl label="Subtract" clicked={this.props.onSubtractFive}  />
+                <CounterControl label="Increment" clicked={ this.props.onIncrementCounter } />
+                <CounterControl label="Decrement" clicked={ this.props.onDecrementCounter }  />
+                <CounterControl label="Add" clicked={ this.props.onAddFive }  />
+                <CounterControl label="Subtract" clicked={ this.props.onSubtractFive }  />
                 <hr />
-                <button onClick={this.props.onStoreResult} >Store Result</button>
+                <button onClick={ this.props.onStoreResult } >Store Result</button>
                 <ul>
                     { this.props.storedResults.map( strResult => (
-                        <li key={strResult.id} onClick={this.props.onDeleteResult}>{strResult.value}</li>
+                      <li key={ strResult.id } 
+                          onClick={ () => this.props.onDeleteResult( strResult.id ) }
+                      >
+                        { strResult.value }
+                      </li>
                       ) )  
                     }
                 </ul>
@@ -64,7 +68,7 @@ const mapDispatchToProps = dispatch => {
       onAddFive: () => dispatch({ type: 'ADD', val: 10 }),
       onSubtractFive: () => dispatch({ type: 'SUBTRACT', val: 15 }),
       onStoreResult: () => dispatch({ type: 'STORE_RESULT' }),
-      onDeleteResult: () => dispatch({ type: 'DELETE_RESULT' }),
+      onDeleteResult: (clickedLiID) => dispatch({ type: 'DELETE_RESULT', id: clickedLiID }),
     };
 }
 
