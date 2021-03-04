@@ -8,17 +8,20 @@ const reducer = (state = initialState, action) => {
     return {
       ...state, counter: state.counter + 1
     }
-  } else if(action.type === 'DECREMENT') {
+  } 
+  if(action.type === 'DECREMENT') {
     return {
       ...state, counter: state.counter - 1
     }
-  } else if(action.type === 'ADDFIVE') {
+  } 
+  if(action.type === 'ADD') {
     return {
-      ...state, counter: state.counter + 5
+      ...state, counter: state.counter + action.val
     }
-  } else if(action.type === 'SUBTRACTFIVE') {
+  } 
+  if(action.type === 'SUBTRACT') {
     return {
-      ...state, counter: state.counter - 5
+      ...state, counter: state.counter - action.val
     }
   }
   return state;
