@@ -9,8 +9,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 // import reducer from './store/reducerOLD';
 
-import counterReducer from './store/Reducers/Counter';
-import resultsReducer from './store/Reducers/Result';
+import counterReducer from './store/Reducers/CounterReducer';
+import resultsReducer from './store/Reducers/ResultsReducer';
 
 const rootReducer = combineReducers({
   ctr: counterReducer,

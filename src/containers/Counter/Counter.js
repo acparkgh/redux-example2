@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => {
       onAddFive: () => dispatch({ type: actionType.ADD, val: 10 }),
     //   onSubtractFive: () => dispatch({ type: actionType.SUBTRACT, val: 15 }),
       onSubtractFive: () => dispatch({ type: actionType.SUBTRACT, val: 15 }),
-      onStoreResult: (result) => dispatch({ type: actionType.STORE_RESULT, result: result  }),
+      onStoreResult: (counterVal) => dispatch({ type: actionType.STORE_RESULT, payload: { counterVal } }),
       onDeleteResult: (clickedLiID) => dispatch({ type: actionType.DELETE_RESULT, id: clickedLiID }),
     };
 }
