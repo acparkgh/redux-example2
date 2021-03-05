@@ -4,13 +4,20 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import reducer from './store/reducer';
+// import reducer from './store/reducerOLD';
 
-// const store = createStore(reducer, composeWithDevTools);
-const store = createStore(reducer, composeWithDevTools(
+import counterReducer from './store/Reducers/Counter';
+import resultsReducer from './store/Reducers/Result';
+
+const rootReducer = combineReducers({
+  ctr: counterReducer,
+  res: resultsReducer,
+})
+
+const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(),
   // other store enhancers if any
 ));
