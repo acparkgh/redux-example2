@@ -17,10 +17,24 @@ const rootReducer = combineReducers({
   res: resultsReducer,
 })
 
-const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(),
-  // other store enhancers if any
-));
+const logger = (store) => {
+  return (
+    (next) => {
+      return (
+        (action) => {
+          console.log(`[Middleware] Dispatching`, action);
+          const result = next(action);
+          console.log( '[Middleare] next state', store.getState() );
+          return result;
+        }
+      )
+    }
+  )
+}
+
+const store = createStore(rootReducer, 
+    composeWithDevTools( applyMiddleware(logger), )
+  );
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
