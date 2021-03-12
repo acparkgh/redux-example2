@@ -10,9 +10,11 @@ export const saveResult = (counterVal) => {
 
 export const storeResult = (counterVal) => {
   return (
-    (dispatch) => {
-      setTimeout( 
-        () => { dispatch( saveResult(counterVal) ) }, 3000 
+    (dispatch, getState) => {
+      setTimeout( () => { const oldCounter = getState().ctr.counter;
+                          console.log(oldCounter);
+                          dispatch( saveResult(counterVal) ); 
+                        }, 3000 
       );
     }
   )
@@ -26,14 +28,6 @@ export const storeResult = (counterVal) => {
 //       }, 2000 );
 //     }
 //   )
-// }
-
-
-// export const storeResult = (counterVal) => {
-//   return ({
-//     type: STORE_RESULT,
-//     payload: { counterVal }
-//   })
 // }
 
 export const deleteResult = (id) => {
