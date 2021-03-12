@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 // import reducer from './store/reducerOLD';
@@ -33,7 +34,7 @@ const logger = (store) => {
 }
 
 const store = createStore(rootReducer, 
-    composeWithDevTools( applyMiddleware(logger), )
+    composeWithDevTools( applyMiddleware(logger, thunk), )
   );
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
