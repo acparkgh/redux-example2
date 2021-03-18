@@ -35,10 +35,11 @@ class Counter extends Component {
     }
 }
 
-const mapStateToProps = state => {
+// const mapStateToProps = (state) => {
+const mapStateToProps = (stateFromStore) => {
     return {
-      ctr: state.ctr.counter,
-      storedResults: state.res.results,
+      ctr: stateFromStore.ctr.counter,
+      storedResults: stateFromStore.res.results,
     };
 }
 
